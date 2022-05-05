@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Show and hide layers</title>
+<meta name="viewport" content="initial-scale=18,maximum-scale=1,user-scalable=yes" />
+<script src="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js"></script>
+<link href="https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css" rel="stylesheet" />
+<style>
+   body { margin: 0; padding: 0; }
+   #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+</style>
+</head>
+<body>
+<style>
+#menu {
+/*background:/* #fff;*/
+position: absolute;
+z-index: 1;
+top: 40px;
+right: 40px;
+border-radius: 50px;
+width: 300px;
+/*border: 1px solid rgba(0, 0, 0, 0.4);*/
+column-count: 4;
+column-width: 12px;
+column-fill: inherit;
+row-gap: 5;
+column-gap: 15px;
+ 
+ 
+font-family: 'Open Sans', sans-serif;
+}
+#menu a {
+font-size: 13px;
+color: white;
+display: table-header-group;
+margin: 0;
+padding: 0;
+padding: 10px;
+text-decoration: rgb(54, 25, 25);
+/*border-bottom: 1px solid rgba(0, 0, 0, 0.25);*/
+column-width: 11px;
+column-count: 4;
+row-gap: 10;
+column-gap: 15px;
+text-align:center;
+ 
+}
+#menu a:last-child {
+border: none;
+color: white;
+}
+ 
+/*#menu a:hover {
+background-color: #f8f8f8;
+color: #404040;
+}*/
+#menu a.active {
+background-color:transparent;
+color:lightgrey;
+}
+/*#menu a.active:hover {
+background: #3074a4;
+}*/
+</style>
+<nav id="menu"></nav>
+<div id="map"></div>
+<script>
+   mapboxgl.accessToken = 'pk.eyJ1Ijoic2NvdHRtYWhveSIsImEiOiJjajMzY3JuYmMwMGE1MndxNjQwdHFxZm0zIn0.Wg6c630lEtSOEuqpRDvItw';
+var map = new mapboxgl.Map({
+container: 'map',
+style: 'mapbox://styles/scottmahoy/ckiaq0k4h7vlv19phjm8hvnyq',
+zoom: 9,
+center: [-118.25, 33.9]
+});
+ 
+map.on('load', function () {
+// add source and layer for spanish
+ 
+map.addSource('Chinese', {
+type: 'vector',
+url: 'mapbox://scottmahoy.btrajhgv'
+});//end addsource
+  
+ 
+map.addLayer({
+'id': 'Chinese',
+'type': 'fill',
+'source': 'Chinese',
+'layout': {
+// make layer visible by default
+'visibility': 'none'
+},//end layout
+'paint': {
+//'circle-radius': 2,
+'fill-color': 'rgba(127, 135, 182,0.3)'
+},//end paint
+'source-layer':
+'Chinese_DictionaryLanguage-20-bf8gl1'
+});//end addLayer
+ 
+ 
+ 
+// add source and layer
+map.addSource('African American', {
+type: 'vector',
+url: 'mapbox://scottmahoy.4ngwbqrq'
+});//end addsource
+  
+map.addLayer({
+'id': 'African American',
+'type': 'fill',
+'source': 'African American',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(45,164,155,0.3)'
+},
+'source-layer':
+'AfricanAmerican-20220412T1912-1dtflt'
+ 
+});
+  
+   map.addSource('Afghanistan', {
+type: 'vector',
+url: 'mapbox://scottmahoy.4xgxwdc9'
+});//end addsource
+  
+map.addLayer({
+'id': 'Afghanistan',
+'type': 'fill',
+'source': 'Afghanistan',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(167, 187, 97,0.3)'
+},
+'source-layer':
+'Afghanistan-20220405T033714Z--15txtb'
+ 
+});
+  
+   map.addSource('Brazil', {
+type: 'vector',
+url: 'mapbox://scottmahoy.4hacd44k'
+});//end addsource
+  
+map.addLayer({
+'id': 'Brazil',
+'type': 'fill',
+'source': 'Brazil',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(75, 192, 175,0.3)'
+},
+'source-layer':
+'Brazil-20220413T062528Z-001-3dobva'
+});
+  
+map.addSource('Antigua', {
+type: 'vector',
+url: 'mapbox://scottmahoy.d3rcra67'
+});//end addsource
+  
+map.addLayer({
+'id': 'Antigua',
+'type': 'fill',
+'source': 'Antigua',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(126, 180, 176, 0.3)'
+},
+'source-layer':
+'AntiguaandBarbuda-20220413T06-18v8xi'
+ 
+ 
+});
+ 
+map.addSource('Armenia', {
+type: 'vector',
+url: 'mapbox://scottmahoy.blchf7sp'
+});//end addsource
+  
+map.addLayer({
+'id': 'Armenia',
+'type': 'fill',
+'source': 'Armenia',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(139, 126, 166, 0.3)'
+},
+'source-layer':
+'Armenia-20220421T185954Z-001-1m58e9'
+ 
+});
+ 
+map.addSource('Bangladesh', {
+type: 'vector',
+url: 'mapbox://scottmahoy.2xilvw1b'
+});//end addsource
+  
+map.addLayer({
+'id': 'Bangladesh',
+'type': 'fill',
+'source': 'Bangladesh',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(211, 211, 234, 0.3)'
+},
+'source-layer':
+ 
+'Bangladesh-20220421T190627Z-0-aodpjp'
+ 
+ 
+});
+ 
+map.addSource('Barbados', {
+type: 'vector',
+url: 'mapbox://scottmahoy.ast5dsra'
+});//end addsource
+  
+map.addLayer({
+'id': 'Barbados',
+'type': 'fill',
+'source': 'Barbados',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(106, 163, 159,0.3)'
+ 
+},
+'source-layer':
+'Barbados-20220421T191015Z-001-bomyzb'
+ 
+ 
+});
+ 
+map.addSource('Belgium', {
+type: 'vector',
+url: 'mapbox://scottmahoy.d5l82fbv'
+});//end addsource
+  
+map.addLayer({
+'id': 'Belgium',
+'type': 'fill',
+'source': 'Belgium',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(218, 175, 106, 0.3)'
+ 
+},
+'source-layer':
+ 
+'Belgium-20220421T192337Z-001-bebvcw'
+});
+ 
+map.addSource('Chile', {
+type: 'vector',
+url: 'mapbox://scottmahoy.3lo61p04'
+});//end addsource
+  
+map.addLayer({
+'id': 'Chile',
+'type': 'fill',
+'source': 'Chile',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(143, 202, 193,0.3)'
+ 
+},
+'source-layer':
+ 
+'Chile-20220421T192423Z-001-3iu1de'
+ 
+});
+ 
+map.addSource('Colombia', {
+type: 'vector',
+url: 'mapbox://scottmahoy.apnkt21q'
+});//end addsource
+  
+map.addLayer({
+'id': 'Colombia',
+'type': 'fill',
+'source': 'Colombia',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(108, 182, 172, 0.3)'
+ 
+},
+'source-layer':
+'Colombia-20220421T193027Z-001-axxuyp'
+});
+ 
+map.addSource('Cambodia', {
+type: 'vector',
+url: 'mapbox://scottmahoy.23zdp5ob'
+});//end addsource
+  
+map.addLayer({
+'id': 'Cambodia',
+'type': 'fill',
+'source': 'Cambodia',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(114, 114, 170, 0.3)'
+ 
+},
+'source-layer':
+'Combodia-20220421T193031Z-001-bevplh'
+});
+ 
+map.addSource('Croatia', {
+type: 'vector',
+url: 'mapbox://scottmahoy.5gjvr3y3'
+});//end addsource
+  
+map.addLayer({
+'id': 'Croatia',
+'type': 'fill',
+'source': 'Croatia',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(225, 150, 65,0.3)'
+ 
+},
+'source-layer':
+'Croatia-20220421T193040Z-001-3f3rd4'
+});
+ 
+map.addSource('Cuba', {
+type: 'vector',
+url: 'mapbox://scottmahoy.5ncq8dbd'
+});//end addsource
+  
+map.addLayer({
+'id': 'Cuba',
+'type': 'fill',
+'source': 'Cuba',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(72, 144, 134, 0.3)'
+ 
+},
+'source-layer':
+'Cuba-20220421T193043Z-001-96p0kh'
+});
+ 
+map.addSource('Curacao', {
+type: 'vector',
+url: 'mapbox://scottmahoy.8tkyv7mb'
+});//end addsource
+  
+map.addLayer({
+'id': 'Curacao',
+'type': 'fill',
+'source': 'Curacao',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(135, 180, 170, 0.3)'
+ 
+},
+'source-layer':
+ 
+'Curacao-20220421T193046Z-001-7qztzi'
+});
+ 
+map.addSource('El Salvador', {
+type: 'vector',
+url: 'mapbox://scottmahoy.7u7hj6eg'
+});//end addsource
+  
+map.addLayer({
+'id': 'El Salvador',
+'type': 'fill',
+'source': 'El Salvador',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(148, 210, 186, 0.3)'
+ 
+},
+'source-layer':
+'ElSalvador-20220421T194928Z-0-49uh4v'
+});
+ 
+map.addSource('Ethiopia', {
+type: 'vector',
+url: 'mapbox://scottmahoy.0jbgxm0b'
+});//end addsource
+  
+map.addLayer({
+'id': 'Ethiopia',
+'type': 'fill',
+'source': 'Ethiopia',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(179, 190, 145, 0.3)'
+ 
+},
+'source-layer':
+'Ethiopia-20220421T194930Z-001-8yk11f'
+});
+ 
+map.addSource('France', {
+type: 'vector',
+url: 'mapbox://scottmahoy.ch2mzasz'
+});//end addsource
+  
+map.addLayer({
+'id': 'France',
+'type': 'fill',
+'source': 'France',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(220, 134, 55, 0.3)'
+ 
+},
+'source-layer':
+'France-20220421T194932Z-001-1217lt'
+});
+ 
+map.addSource('Germany', {
+type: 'vector',
+url: 'mapbox://scottmahoy.cvjlli95'
+});//end addsource
+  
+map.addLayer({
+'id': 'Germany',
+'type': 'fill',
+'source': 'Germany',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(231, 185, 151, 0.3)'
+ 
+},
+'source-layer':
+'Germany-20220421T194941Z-001-9ih8g9'
+});
+ 
+map.addSource('Greece', {
+type: 'vector',
+url: 'mapbox://scottmahoy.1pyybkfz'
+});//end addsource
+  
+map.addLayer({
+'id': 'Greece',
+'type': 'fill',
+'source': 'Greece',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(246, 138, 83, 0.3)'
+ 
+},
+'source-layer':
+'Greece-20220421T194944Z-001-beedo2'
+});
+ 
+map.addSource('Guatemala', {
+type: 'vector',
+url: 'mapbox://scottmahoy.2ozxmjga'
+});//end addsource
+  
+map.addLayer({
+'id': 'Guatemala',
+'type': 'fill',
+'source': 'Guatemala',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(61, 174, 138, 0.3)'
+ 
+},
+'source-layer':
+ 
+'Guatemala-20220421T194947Z-00-d7siab'
+});
+ 
+map.addSource('Honduras', {
+type: 'vector',
+url: 'mapbox://scottmahoy.6ezfzmzl'
+});//end addsource
+  
+map.addLayer({
+'id': 'Honduras',
+'type': 'fill',
+'source': 'Honduras',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(169, 208, 192, 0.3)'
+ 
+},
+'source-layer':
+'Honduras-20220421T194950Z-001-043alu'
+});
+ 
+map.addSource('India', {
+type: 'vector',
+url: 'mapbox://scottmahoy.72tol0pz'
+});//end addsource
+  
+map.addLayer({
+'id': 'India',
+'type': 'fill',
+'source': 'India',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(139, 159, 209, 0.3)'
+ 
+},
+'source-layer':
+'India-20220421T194952Z-001-a9exwi'
+});
+ 
+map.addSource('Indonesia', {
+type: 'vector',
+url: 'mapbox://scottmahoy.43q79gmd'
+});//end addsource
+  
+map.addLayer({
+'id': 'Indonesia',
+'type': 'fill',
+'source': 'Indonesia',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(169, 192, 228, 0.3)'
+ 
+},
+'source-layer':
+'Indonesia-20220421T194954Z-00-0bfdcn'
+});
+ 
+map.addSource('Iran', {
+type: 'vector',
+url: 'mapbox://scottmahoy.331v6xx7'
+});//end addsource
+  
+map.addLayer({
+'id': 'Iran',
+'type': 'fill',
+'source': 'Iran',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(255, 248, 161, 0.3)'
+ 
+},
+'source-layer':
+'Iran-20220421T214313Z-001-0hpo9i'
+});
+ 
+map.addSource('Israel', {
+type: 'vector',
+url: 'mapbox://scottmahoy.4fbllns4'
+});//end addsource
+  
+map.addLayer({
+'id': 'Israel',
+'type': 'fill',
+'source': 'Israel',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(233, 217, 71, 0.3)'
+ 
+},
+'source-layer':
+'Israel-20220421T214315Z-001-0ilpd3'
+});
+ 
+map.addSource('Italy', {
+type: 'vector',
+url: 'mapbox://scottmahoy.9rfi9yvr'
+});//end addsource
+  
+map.addLayer({
+'id': 'Italy',
+'type': 'fill',
+'source': 'Italy',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(226, 111, 97, 0.3)'
+ 
+},
+'source-layer':
+'Italy-20220421T214319Z-001-5r3jpz'
+});
+ 
+map.addSource('Jamaica', {
+type: 'vector',
+url: 'mapbox://scottmahoy.63x8rfsk'
+});//end addsource
+  
+map.addLayer({
+'id': 'Jamaica',
+'type': 'fill',
+'source': 'Jamaica',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(100, 170, 145, 0.3)'
+ 
+},
+'source-layer':
+'Jamaica-20220421T214321Z-001-3rn82e'
+});
+ 
+map.addSource('Japanese', {
+type: 'vector',
+url: 'mapbox://scottmahoy.2tu7vh8a'
+});//end addsource
+  
+map.addLayer({
+'id': 'Japanese',
+'type': 'fill',
+'source': 'Japanese',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(118, 152, 190, 0.3)'
+ 
+},
+'source-layer':
+'Japanese_DictionaryLanguage-2-9m8oq6'
+});
+ 
+map.addSource('Korean', {
+type: 'vector',
+url: 'mapbox://scottmahoy.3mmwqrgw'
+});//end addsource
+  
+map.addLayer({
+'id': 'Korean',
+'type': 'fill',
+'source': 'Korean',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'RGBA(163, 199, 233, 0.3)'
+ 
+},
+'source-layer':
+'Korea_DictionaryLanguage-2022-d42uwb'
+});
+ 
+map.addSource('Lithuania', {
+type: 'vector',
+url: 'mapbox://scottmahoy.54wupf2e'
+});//end addsource
+  
+map.addLayer({
+'id': 'Lithuania',
+'type': 'fill',
+'source': 'Lithuania',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(241, 93, 93, 0.3)'
+ 
+},
+'source-layer':
+'Lithuania-20220421T214340Z-00-5fe0w1'
+ 
+});
+ 
+map.addSource('Macedonia', {
+type: 'vector',
+url: 'mapbox://scottmahoy.9kkl81tc'
+});//end addsource
+  
+map.addLayer({
+'id': 'Macedonia',
+'type': 'fill',
+'source': 'Macedonia',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(242, 117, 129, 0.3)'
+ 
+},
+'source-layer':
+'Macedonia-20220421T233011Z-00-8ng14p'
+});
+ 
+map.addSource('Malaysia', {
+type: 'vector',
+url: 'mapbox://scottmahoy.0syqlf01'
+});//end addsource
+  
+map.addLayer({
+'id': 'Malaysia',
+'type': 'fill',
+'source': 'Malaysia',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(76, 152, 203, 0.3)'
+ 
+},
+'source-layer':
+ 
+'Malaysia-20220421T233013Z-001-3rudi6'
+});
+ 
+map.addSource('Mexico', {
+type: 'vector',
+url: 'mapbox://scottmahoy.d3q0eo50'
+});//end addsource
+  
+map.addLayer({
+'id': 'Mexico',
+'type': 'fill',
+'source': 'Mexico',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(95, 192, 144, 0.3)'
+ 
+},
+'source-layer':
+ 
+ 
+'Mexico_Culture-20220421T23301-ck6i3i'
+});
+ 
+ 
+map.addSource('Mongolia', {
+type: 'vector',
+url: 'mapbox://scottmahoy.93ao8600'
+});//end addsource
+  
+map.addLayer({
+'id': 'Mongolia',
+'type': 'fill',
+'source': 'Mongolia',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(106, 207, 246, 0.3)'
+ 
+ 
+ 
+},
+'source-layer':
+'Mongolia-20220421T233021Z-001-agrhtt'
+ 
+});
+map.addSource('Myanmar', {
+type: 'vector',
+url: 'mapbox://scottmahoy.268zumi1'
+});//end addsource
+  
+map.addLayer({
+'id': 'Myanmar',
+'type': 'fill',
+'source': 'Myanmar',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(166, 205, 225, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Myanmar-20220425T092949Z-001-az3bvd'
+});
+ 
+map.addSource('Nepal', {
+type: 'vector',
+url: 'mapbox://scottmahoy.dqg0ka97'
+});//end addsource
+  
+map.addLayer({
+'id': 'Nepal',
+'type': 'fill',
+'source': 'Nepal',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(123, 179, 204, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Nepal-20220425T092958Z-001-7zl17b'
+});
+
+map.addSource('Netherlands', {
+type: 'vector',
+url: 'mapbox://scottmahoy.7yi5onu5'
+});//end addsource
+  
+map.addLayer({
+'id': 'Netherlands',
+'type': 'fill',
+'source': 'Netherlands',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba( 212, 166, 114, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Netherlands-20220425T174626Z--47rgrq'
+});
+
+map.addSource('Nicaragua', {
+type: 'vector',
+url: 'mapbox://scottmahoy.b3p4fmcy'
+});//end addsource
+  
+map.addLayer({
+'id': 'Nicaragua',
+'type': 'fill',
+'source': 'Nicaragua',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(119, 182, 139, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Nicaragua-20220425T174549Z-00-1kowbp'
+});
+
+map.addSource('Pakistan', {
+type: 'vector',
+url: 'mapbox://scottmahoy.aula16nx'
+});//end addsource
+  
+map.addLayer({
+'id': 'Pakistan',
+'type': 'fill',
+'source': 'Pakistan',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(86, 179, 202, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Pakistan-20220429T222123Z-001-1mbgok'
+});
+
+
+
+map.addSource('Peru', {
+type: 'vector',
+url: 'mapbox://scottmahoy.a4i26qmn'
+});//end addsource
+  
+map.addLayer({
+'id': 'Peru',
+'type': 'fill',
+'source': 'Peru',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(155, 205, 175, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Peru-20220425T093002Z-001-90mxvv'
+});
+
+map.addSource('Phillipine', {
+type: 'vector',
+url: 'mapbox://scottmahoy.8nro88vu'
+});//end addsource
+  
+map.addLayer({
+'id': 'Phillipine',
+'type': 'fill',
+'source': 'Phillipine',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(197, 204, 232, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Phillipine-20220425T093005Z-0-9fs8cl'
+
+});
+
+map.addSource('Portugal', {
+type: 'vector',
+url: 'mapbox://scottmahoy.4znevkug'
+});//end addsource
+  
+map.addLayer({
+'id': 'Portugal',
+'type': 'fill',
+'source': 'Portugal',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(232, 179, 177, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Portugal-20220425T093007Z-001-20oom5'
+
+});
+
+map.addSource('PuertoRico', {
+type: 'vector',
+url: 'mapbox://scottmahoy.byeyk1pm'
+});//end addsource
+  
+map.addLayer({
+'id': 'PuertoRico',
+'type': 'fill',
+'source': 'PuertoRico',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(111, 194, 130, 0.3)'
+ 
+ 
+},
+'source-layer':
+'PuertoRico-20220502T191742Z-0-3a9tc8'
+
+});
+
+map.addSource('Russia', {
+type: 'vector',
+url: 'mapbox://scottmahoy.9cxbwxkw'
+});//end addsource
+  
+map.addLayer({
+'id': 'Russia',
+'type': 'fill',
+'source': 'Russia',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(148, 201, 210, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Russia-20220502T192021Z-001-430piy'
+
+});
+
+map.addSource('Samoa', {
+type: 'vector',
+url: 'mapbox://scottmahoy.8z8wlpy1'
+});//end addsource
+  
+map.addLayer({
+'id': 'Samoa',
+'type': 'fill',
+'source': 'Samoa',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(210 193, 148, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Samoa-20220502T192351Z-001-8fhu1e'
+
+});
+
+map.addSource('Spanish', {
+type: 'vector',
+url: 'mapbox://scottmahoy.9donf9bc'
+});//end addsource
+  
+map.addLayer({
+'id': 'Spanish',
+'type': 'fill',
+'source': 'Spanish',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(211, 152, 158, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Spanish_DictionaryLanguage-20-32gwg8'
+
+});
+
+map.addSource('Sri Lanka', {
+type: 'vector',
+url: 'mapbox://scottmahoy.8j1eyrj2'
+});//end addsource
+  
+map.addLayer({
+'id': 'Sri Lanka',
+'type': 'fill',
+'source': 'Sri Lanka',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(112, 174, 184, 0.3)'
+ 
+ 
+},
+'source-layer':
+
+'SriLanka-20220502T211826Z-001-3bhwfm'
+
+});
+
+
+map.addSource('Sweden', {
+type: 'vector',
+url: 'mapbox://scottmahoy.dbvqqhay'
+});//end addsource
+  
+map.addLayer({
+'id': 'Sweden',
+'type': 'fill',
+'source': 'Sweden',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba( 243, 132, 161,0.3)'
+ 
+ 
+},
+'source-layer':
+'Sweden-20220502T213604Z-001-29zgzp'
+
+});
+
+map.addSource('Switzerland', {
+type: 'vector',
+url: 'mapbox://scottmahoy.4svgecqb'
+});//end addsource
+  
+map.addLayer({
+'id': 'Switzerland',
+'type': 'fill',
+'source': 'Switzerland',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(237, 185, 208, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Switzerland-20220502T213605Z--ap9swt'
+
+});
+
+map.addSource('Taiwan', {
+type: 'vector',
+url: 'mapbox://scottmahoy.6z5noq7w'
+});//end addsource
+  
+map.addLayer({
+'id': 'Taiwan',
+'type': 'fill',
+'source': 'Taiwan',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(106, 166, 175, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Taiwan-20220502T213607Z-001-77e028'
+
+});
+
+
+map.addSource('Thailand', {
+type: 'vector',
+url: 'mapbox://scottmahoy.2m3jlt5x'
+});//end addsource
+  
+map.addLayer({
+'id': 'Thailand',
+'type': 'fill',
+'source': 'Thailand',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(0, 186, 188,0.3)'
+ 
+ 
+},
+'source-layer':
+'Thailand-20220502T215447Z-001-349bkx'
+
+});
+
+
+map.addSource('Trinidad', {
+type: 'vector',
+url: 'mapbox://scottmahoy.8mljbapv'
+});//end addsource
+  
+map.addLayer({
+'id': 'Trinidad',
+'type': 'fill',
+'source': 'Trinidad',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(128, 169, 136,0.3)'
+ 
+ 
+},
+'source-layer':
+'TrinidadTobago-20220502T21361-3s7qi0'
+
+});
+
+map.addSource('UK', {
+type: 'vector',
+url: 'mapbox://scottmahoy.anrtkbf2'
+});//end addsource
+  
+map.addLayer({
+'id': 'UK',
+'type': 'fill',
+'source': 'UK',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(195, 160, 103, 0.3)'
+ 
+ 
+},
+'source-layer':
+'UnitedKingdom-20220502T213614-8yoxz2'
+
+});
+
+map.addSource('Venezuela', {
+type: 'vector',
+url: 'mapbox://scottmahoy.6s27dpgk'
+});//end addsource
+  
+map.addLayer({
+'id': 'Venezuela',
+'type': 'fill',
+'source': 'Venezuela',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(195, 160, 103,0.3)'
+ 
+ 
+},
+'source-layer':
+'Venezuela-20220502T213616Z-00-2g9mkk'
+
+});
+
+map.addSource('Vietnam', {
+type: 'vector',
+url: 'mapbox://scottmahoy.28qxu1rv'
+});//end addsource
+  
+map.addLayer({
+'id': 'Vietnam',
+'type': 'fill',
+'source': 'Vietnam',
+'layout': {
+'visibility': 'none'
+},
+'paint': {
+'fill-color': 'rgba(116, 194, 197, 0.3)'
+ 
+ 
+},
+'source-layer':
+'Vietnam-20220502T213618Z-001-5f73ai'
+
+});
+
+
+map.addLayer({
+   'id': 'All'
+});
+
+map.addLayer({
+   'id': 'Clear'
+})
+
+});//end onload function
+// enumerate ids of the layers
+var toggleableLayerIds = ['All', 'Clear', 'Chinese', 'African American', 'Afghanistan', 'Brazil', 'Antigua', 'Armenia', 'Bangladesh', 'Barbados', 'Belgium', 'Chile', 'Colombia', 'Cambodia', 'Croatia', 'Cuba', 'Curacao', 'El Salvador', 'Ethiopia', 'France', 'Germany', 'Greece', 'Guatemala', 'Honduras', 'India', 'Indonesia', 'Iran', 'Israel', 'Italy','Jamaica', 'Japanese', 'Korean', 'Lithuania', 'Macedonia','Malaysia', 'Mexico', 'Mongolia', 'Myanmar','Nepal','Netherlands', 'Nicaragua', 'Pakistan','Peru', 'Phillipine', 'Portugal', 'PuertoRico', 'Russia','Samoa', 'Spanish', 'Sri Lanka','Sweden','Switzerland', 'Taiwan', 'Thailand', 'Trinidad', 'UK', 'Venezuela', 'Vietnam'];
+ 
+ 
+// set up the corresponding toggle button for each layer
+
+for (var i = 0; i < toggleableLayerIds.length; i++) {
+   var id = toggleableLayerIds[i];
+   var link = document.createElement('a');
+   link.href = '#';
+   link.className = 'active';
+   link.textContent = id;
+
+   link.onclick = function (e) {
+      var clickedLayer = this.textContent;
+      e.preventDefault();
+      e.stopPropagation();
+
+      // This activates when the All button is activated and
+      // Loops through all the layers and activates them 
+      if (clickedLayer == 'All') {
+         for (var j = 0; j < toggleableLayerIds.length; j++) {
+            var layer = toggleableLayerIds[j];
+            var visibility = map.getLayoutProperty(layer, 'visibility');
+            if (visibility == 'none') {
+               map.setLayoutProperty(layer, 'visibility', 'visible');
+               this.className = '';
+            }
+            else {
+               this.className = 'active';
+               map.setLayoutProperty(layer, 'visibility', 'none');
+            }
+         }
+      }
+
+      if (clickedLayer == 'Clear') {
+         for (var j = 0; j < toggleableLayerIds.length; j++) {
+            var layer = toggleableLayerIds[j];
+            var visibility = map.getLayoutProperty(layer, 'visibility');
+            if (visibility == 'visible') {
+               map.setLayoutProperty(layer, 'visibility', 'none');
+               this.className = '';
+            }
+         }
+      }
+      var visibility = map.getLayoutProperty(clickedLayer, 'visibility');
+      // toggle layer visibility by changing the layout object's visibility property
+      if (visibility === 'none') {
+         map.setLayoutProperty(clickedLayer, 'visibility', 'visible');
+         this.className = '';
+      } else {
+         this.className = 'active';
+         map.setLayoutProperty(clickedLayer, 'visibility', 'none');
+         }
+      };
+      if (map.getLayer("cluster-count")) {
+    map.removeLayer("cluster-count");
+}
+   var layers = document.getElementById('menu');
+   layers.appendChild(link);
+}
+
+map.addControl(new mapboxgl.NavigationControl(), 'top-left');
+
+map.add
+ 
+</script>
+ 
+</body>
+</html>
+ 
+
